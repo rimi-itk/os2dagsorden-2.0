@@ -558,4 +558,15 @@ function _os2dagsorden_admin_views_render_row(&$term, $form)   {
         
         $row = array('data' => $row);
         return $row;
-}      
+}
+
+/**
+ * Implements hook_views_default_views_alter(&$views).
+ *
+ * Disables the default "Administration: Users" view.
+ */
+function os2dagsorden_admin_views_views_default_views_alter(&$views) {
+  if (isset($views['admin_views_user'])) {
+    $views['admin_views_user']->disabled = TRUE;
+  }
+}
